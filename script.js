@@ -1,12 +1,16 @@
-
-    var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
-    var x = setInterval(function() {
-      var now = new Date().getTime();
-      var distance = countDownDate - now;
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-      + minutes + "m " + seconds + "s ";
-    }, 1000);
+//your JS code here. If required.
+function livetime() {
+  let date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+  let cudate = `${month}/${day}/${year}`;
+  document.getElementById('timer').textContent = cudate + ', ' + time;
+}
+function startTimer() {
+  livetime();
+  setInterval(livetime, 1000); 
+}
+ 
+window.addEventListener('load', startTimer);
